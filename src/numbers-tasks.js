@@ -613,13 +613,16 @@ function getMaxNumber(firstNumber, secondNumber) {
  * -1, 1 => -1 | 0 | 1
  */
 function getRandomInteger(min, max) {
-  while (true) {
-    const randomCoeff = Math.random();
-    const maxNumber = Math.floor(randomCoeff * max);
+  let randomCoeff = Math.random();
+  let maxNumber = Math.floor(randomCoeff * max);
+  while (maxNumber < min) {
+    randomCoeff = Math.random();
+    maxNumber = Math.floor(randomCoeff * max);
     if (maxNumber >= min) {
       return maxNumber;
     }
   }
+  return maxNumber;
 }
 
 /**
